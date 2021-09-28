@@ -39,7 +39,7 @@ sudo perl -pi -e "s/# (?=services\.openssh\.enable)//g" /mnt/etc/nixos/configura
 
 
 # --Install
-sudo nixos-install --no-root-passwd
+sudo nixos-install
 
 # --Reboot
 # sudo reboot
