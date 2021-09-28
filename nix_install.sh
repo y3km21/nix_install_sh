@@ -42,4 +42,4 @@ sudo perl -pi -e "s/# (?=services\.openssh\.enable)//g" /mnt/etc/nixos/configura
 sudo nixos-install --no-root-passwd
 
 # --Reboot
-sudo reboot
+#sudo reboot
