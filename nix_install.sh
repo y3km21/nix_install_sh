@@ -34,7 +34,7 @@ sudo swapon /dev/sda2
 # --Configuration
 sudo nixos-generate-config --root /mnt
 sudo perl -pi -e "s/# (?=boot\.loader\.grub\.device)//g" /mnt/etc/nixos/configuration.nix
-sudo perl -pi -e 's#(?<=boot\.loader\.grub\.device = )".*"#"/dev/disk/by-id/ata-QEMU_HARDDISK_QM00001"#g' /mnt/etc/nixos/configuration.nix
+sudo perl -pi -e 's#(?<=boot\.loader\.grub\.device = )".*";#"/dev/disk/by-id/ata-QEMU_HARDDISK_QM00001"#g' /mnt/etc/nixos/configuration.nix
 sudo perl -pi -e "s/# (?=services\.openssh\.enable)//g" /mnt/etc/nixos/configuration.nix
 
 
