@@ -13,7 +13,7 @@ sudo parted /dev/sda -- mkpart primary 1MiB 100MiB
 sudo parted /dev/sda -- set 3 boot on
 sudo parted /dev/sda -- set 3 bios_grub on
 
-#Formatting
+# --Formatting
 # root
 sudo mkfs.ext4 -L nixos /dev/sda1
 # swap
@@ -22,7 +22,7 @@ sudo mkswap -L swap /dev/sda2
 sudo mkfs.ext4 -L boot /dev/sda3
 
 
-#Mount
+# --Mount
 # root
 sudo mount /dev/disk/by-label/nixos /mnt
 # boot
@@ -31,4 +31,14 @@ sudo mount /dev/disk/by-label/boot /mnt/boot
 # swap
 sudo swapon /dev/sda2
 
+# --Configuration
+sudo nixos-generate-config --root /mnt
+sudo sed -i -e "s/# (?=boot\.loader\.grub\.device)//g" /mnt/etc/nixos/configuration.nix
+sudo sed -i -e "s/# (?=services\.openssh\.enable)//g" /mnt/etc/nixos/configuration.nix
 
+
+# --Install
+sudo nixos-install --no-root-passwd
+
+# --Reboot
+sudo reboot
