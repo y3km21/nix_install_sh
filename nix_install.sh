@@ -3,7 +3,7 @@
 # --Parted
 # BIOS/GPT
 # make gpt partition table
-sudo parted /dev/sda -- mklabel gpt
+sudo parted /dev/sda -- mklabel msdos
 # add root partition
 sudo parted /dev/sda -- mkpart primary 100MiB -4GiB
 # add swap partition
@@ -11,7 +11,7 @@ sudo parted /dev/sda -- mkpart primary linux-swap -4GiB 100%
 # add boot partition
 sudo parted /dev/sda -- mkpart primary 1MiB 100MiB
 sudo parted /dev/sda -- set 3 boot on
-sudo parted /dev/sda -- set 3 bios_grub on
+#sudo parted /dev/sda -- set 3 bios_grub on
 
 # --Formatting
 # root
@@ -42,4 +42,4 @@ sudo perl -pi -e "s/# (?=services\.openssh\.enable)//g" /mnt/etc/nixos/configura
 sudo nixos-install --no-root-passwd
 
 # --Reboot
-#sudo reboot
+sudo reboot
