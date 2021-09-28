@@ -10,7 +10,7 @@ sudo parted /dev/sda -- mkpart primary 100MiB -4GiB
 sudo parted /dev/sda -- mkpart primary linux-swap -4GiB 100%
 # add boot partition
 sudo parted /dev/sda -- mkpart primary 1MiB 100MiB
-sudo parted /dev/sda -- set 3 boot on
+#sudo parted /dev/sda -- set 3 boot on
 #sudo parted /dev/sda -- set 3 bios_grub on
 
 # --Formatting
